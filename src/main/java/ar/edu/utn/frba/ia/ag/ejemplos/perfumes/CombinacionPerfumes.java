@@ -4,6 +4,7 @@ import main.java.ar.edu.utn.frba.ia.ag.Individuo;
 import java.util.concurrent.ThreadLocalRandom;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas.PistaUno;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Logger;
 
 public class CombinacionPerfumes extends Individuo {
@@ -43,14 +44,15 @@ public class CombinacionPerfumes extends Individuo {
 	
 	@Override
 	public String toString() {
-		// TODO
 
 		String mensaje = "";
 
+		Collections.sort(perfumes);
+
 		for (Perfume perfume : perfumes ) {
-			mensaje += "Ubicacion: " + perfume.getUbicacion() + "\n";
+			mensaje += "\nUbicacion: " + perfume.getUbicacion() + "\n";
 			mensaje += "Perfume: " + perfume.getNombre() + "\n";
-			mensaje += "Aroma: " + perfume.getAroma() + "\n\n";
+			mensaje += "Aroma: " + perfume.getAroma() + "\n";
 		}
 
 		return mensaje;
