@@ -24,8 +24,8 @@ public class PistaUno extends Pista {
 		Perfume perfumeTommy = searchPerfumeByName("Tommy");
 		Perfume perfumeFrutal = searchPerfumeBySmell("frutal");
 
-		if (perfumeDG.getUbicacion() == perfumeTommy.getUbicacion() + 2 &&
-			perfumeDG.getUbicacion() == perfumeFrutal.getUbicacion() - 1) {
+		if (perfumeDG.getUbicacion() == perfumeTommy.getUbicacion() - 2 &&
+			perfumeDG.getUbicacion() == perfumeFrutal.getUbicacion() + 1) {
 			verdad = 1;
 		}
 

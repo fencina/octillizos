@@ -10,8 +10,13 @@ public class PerfumeUtils {
 
 		ArrayList<String> nombres = new ArrayList<String>();
 		nombres.add("Tommy");
-		nombres.add("D&G");
 		nombres.add("Polo");
+		nombres.add("D&G");
+		nombres.add("CK");
+		nombres.add("PR");
+		nombres.add("Chanel");
+		nombres.add("Banderas");
+		nombres.add("CH");
 
 		return nombres;
 	}
@@ -20,7 +25,12 @@ public class PerfumeUtils {
 
 		ArrayList<String> aromas = new ArrayList<String>();
 		aromas.add("citrico");
+		aromas.add("floral");
 		aromas.add("frutal");
+		aromas.add("oriental");
+		aromas.add("acaramelado");
+		aromas.add("oceanico");
+		aromas.add("especiado");
 		aromas.add("amaderado");
 
 		return aromas;
@@ -32,6 +42,11 @@ public class PerfumeUtils {
 		ubicaciones.add(1);
 		ubicaciones.add(2);
 		ubicaciones.add(3);
+		ubicaciones.add(4);
+		ubicaciones.add(5);
+		ubicaciones.add(6);
+		ubicaciones.add(7);
+		ubicaciones.add(8);
 
 		return ubicaciones;
 	}

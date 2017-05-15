@@ -1,10 +1,16 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
-public class Perfume {
+public class Perfume implements Comparable<Perfume> {
 	
 	private String nombre;
 	private Integer ubicacion;
 	private String aroma;
+
+	@Override
+	public int compareTo(Perfume perfume)
+	{
+	     return(ubicacion - perfume.getUbicacion());
+	}
 
 	public String getNombre() {
 		return nombre;
