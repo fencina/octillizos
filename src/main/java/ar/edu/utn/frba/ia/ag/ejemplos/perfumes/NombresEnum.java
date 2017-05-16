@@ -10,15 +10,15 @@ public enum NombresEnum {
 	BANDERAS("Banderas"),
 	CH("CH");
 	
-	private String nombre;
+	private String string;
 	
-	private NombresEnum(String name)
+	private NombresEnum(String string)
 	{
-		this.nombre = name;
+		this.string = string;
 	}
 	
 	public String getString(){
-		return this.nombre;
+		return this.string;
 	}
 	
 }

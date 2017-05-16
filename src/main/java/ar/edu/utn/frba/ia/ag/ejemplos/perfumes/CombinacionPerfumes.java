@@ -51,7 +51,7 @@ public class CombinacionPerfumes extends Individuo {
 		for (Perfume perfume : perfumes ) {
 			mensaje += "\nUbicacion: " + perfume.getUbicacion() + "\n";
 			mensaje += "Perfume: " + perfume.getNombre().getString() + "\n";
-			mensaje += "Aroma: " + perfume.getAroma() + "\n";
+			mensaje += "Aroma: " + perfume.getAroma().getString() + "\n";
 		}
 
 		return mensaje;

@@ -6,21 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PerfumeUtils {
 	
-	public static ArrayList<String> buildSmellsArray() {
-
-		ArrayList<String> aromas = new ArrayList<String>();
-		aromas.add("citrico");
-		aromas.add("floral");
-		aromas.add("frutal");
-		aromas.add("oriental");
-		aromas.add("acaramelado");
-		aromas.add("oceanico");
-		aromas.add("especiado");
-		aromas.add("amaderado");
-
-		return aromas;
-	}
-
 	public static ArrayList<Integer> buildLocationsArray() {
 
 		ArrayList<Integer> ubicaciones = new ArrayList<Integer>();
@@ -37,10 +22,12 @@ public class PerfumeUtils {
 	}
 
 	public static ArrayList<Perfume> buildRandomCombination() {
-		NombresEnum[] names = NombresEnum.values();
-		ArrayList<NombresEnum> nombres = new ArrayList<NombresEnum>(Arrays.asList(names));
+		NombresEnum[] vNombres = NombresEnum.values();
+		ArrayList<NombresEnum> nombres = new ArrayList<NombresEnum>(Arrays.asList(vNombres));
 		
-		ArrayList<String> aromas = PerfumeUtils.buildSmellsArray();
+		AromasEnum[] vAromas = AromasEnum.values();
+		ArrayList<AromasEnum> aromas = new ArrayList<AromasEnum>(Arrays.asList(vAromas));
+		
 		ArrayList<Integer> ubicaciones = PerfumeUtils.buildLocationsArray();
 
 		ArrayList<Perfume> combinacion = new ArrayList<Perfume>();

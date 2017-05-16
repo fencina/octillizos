@@ -4,7 +4,7 @@ public class Perfume implements Comparable<Perfume> {
 	
 	private NombresEnum nombre;
 	private Integer ubicacion;
-	private String aroma;
+	private AromasEnum aroma;
 
 	@Override
 	public int compareTo(Perfume perfume)
@@ -20,11 +20,11 @@ public class Perfume implements Comparable<Perfume> {
 		this.nombre = nombre;
 	}
 	
-	public String getAroma() {
+	public AromasEnum getAroma() {
 		return aroma;
 	}
 	
-	public void setAroma(String aroma) {
+	public void setAroma(AromasEnum aroma) {
 		this.aroma = aroma;
 	}
 
