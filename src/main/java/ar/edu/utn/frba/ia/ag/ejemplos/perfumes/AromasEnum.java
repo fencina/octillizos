@@ -1,12 +1,12 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
 public enum AromasEnum {
-	CITRICO("cítrico"),
+	CITRICO("citrico"),
 	FLORAL("floral"),
 	FRUTAL("frutal"),
 	ORIENTAL("oriental"),
 	ACARAMELADO("acaramelado"),
-	OCEANICO("oceánico"),
+	OCEANICO("oceanico"),
 	ESPECIADO("especiado"),
 	AMADERADO("amaderado");
 	
