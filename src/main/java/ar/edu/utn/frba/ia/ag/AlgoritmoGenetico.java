@@ -117,30 +117,24 @@ public class AlgoritmoGenetico {
 		this.configuracion.getMutacion().mutar(this.individuos, this.estado);
 	}
 	
-	private void loggearEstado() {
+    private void loggearEstado() {
+		System.out.print("Individuo final: " + this.individuos.get(0).toString());
+		System.out.println("Cantidad de Veces que muto: " + this.estado.getCantMutaciones() + " / " + this.estado.getCiclos() + "\n");
+		System.out.println("Individuo Campeon: " + this.estado.getMejorIndividuo());
+		System.out.println("Peor Individuo: " + this.estado.getPeorIndividuo());
 		
+		System.out.println("Funciones de aptitud por iteración:");
+		System.out.println("Iteración;Mejor;Promedio;Peor");
 		for (int i = 0; i < this.estado.getMejoresIndividuos().size(); i++) {
 			
-			Individuo individuo = this.estado.getMejoresIndividuos().get(i);
+			Individuo mejorIndividuo = this.estado.getMejoresIndividuos().get(i);
+			Individuo peorIndividuo = this.estado.getPeoresIndividuos().get(i);
 			Double aptitudPromedio = this.estado.getAptitudesPromedio().get(i);
 			
-			Logger.getLogger(
-					Logger.GLOBAL_LOGGER_NAME).log(
-							Level.SEVERE,
-							"Promedio: "
-									+ aptitudPromedio
-									+ " // Mejor Individuo "
-									+ individuo.toString());
-			
-			System.out.println(this.estado.getMejoresIndividuos().get(i).aptitud() + "	"
-					+ this.estado.getAptitudesPromedio().get(i) + "	"
-					+ this.estado.getPeoresIndividuos().get(i).aptitud());
+			System.out.print(String.format("%d;", i));
+			System.out.print(String.format("%1$.3f;", mejorIndividuo.aptitud()));
+			System.out.print(String.format("%1$.3f;", aptitudPromedio));
+			System.out.println(String.format("%1$.3f;", peorIndividuo.aptitud()));
 		}
-		
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe("Individuo mas Apto: " + this.individuos.get(0).toString());
-		
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe("Cantidad de Veces que muto: " + this.estado.getCantMutaciones() + " / " + this.estado.getCiclos());
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe("Individuo Campeon: " + this.estado.getMejorIndividuo());
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe("Peor Individuo: " + this.estado.getPeorIndividuo());
 	}
 }

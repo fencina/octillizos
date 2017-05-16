@@ -63,14 +63,14 @@ public class CombinacionPerfumes extends Individuo {
 	@Override
 	public String toString() {
 
-		String mensaje = "";
+		String mensaje = "\nUbicación;Perfume;Aroma;\n";
 
 		Collections.sort(perfumes);
 
 		for (Perfume perfume : perfumes ) {
-			mensaje += "\nUbicacion: " + perfume.getUbicacion() + "\n";
-			mensaje += "Perfume: " + perfume.getNombre().getString() + "\n";
-			mensaje += "Aroma: " + perfume.getAroma().getString() + "\n";
+			mensaje += perfume.getUbicacion();
+			mensaje += ";" + perfume.getNombre().getString();
+			mensaje += ";" + perfume.getAroma().getString() + ";\n";
 		}
 
 		return mensaje;

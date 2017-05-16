@@ -23,11 +23,6 @@ public class AcertijoPerfumes {
 		AlgoritmoGenetico combinacionPerfumes = new AlgoritmoGenetico(config, CombinacionPerfumes.class);
 		
 		Individuo combinacion = combinacionPerfumes.ejecutar();
-		
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe("Individuo final: " + combinacion.toString());
-		
-		System.out.println("------------------------------------------------------------------------");
-		
 	}
 	
 }
