@@ -1,4 +1,6 @@
 /.idea
 *.class
 src/.project
+build/classes/main/java/ar/edu/utn/frba/ia/ag/ejemplos/monedas/ejemploMonedas.class
+*.class
 src/.classpath

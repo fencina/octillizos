@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import main.java.ar.edu.utn.frba.ia.ag.Individuo;
-import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas.PistaUno;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas.*;
 
 public class CombinacionPerfumes extends Individuo {
 	
@@ -23,15 +23,34 @@ public class CombinacionPerfumes extends Individuo {
 	@Override
 	public double aptitud() {
 
-		// TODO - Crear todas las pistas e ir acumulando la aptitud segun la resolucion de cada una
-		// aptitud = 0;
-		// foreach( pistas as pista) {
-		//		aptitud += pista.resolver(); }
-		// return aptitud;
+		double valorAptitud = 0;
 
-		PistaUno pista = new PistaUno(getPerfumes());
-		return pista.resolver();
+		ArrayList<Pista> pistas = getPistas();
+
+		for (Pista pista : pistas ) {
+			valorAptitud += pista.resolver();
+		}
+
+		return valorAptitud;
 	}
+
+    public ArrayList<Pista> getPistas() {
+
+       ArrayList<Pista> pistas = new ArrayList<Pista>();
+
+       pistas.add(new PistaUno(getPerfumes()));
+       pistas.add(new PistaDos(getPerfumes()));
+       pistas.add(new PistaTres(getPerfumes()));
+       pistas.add(new PistaCuatro(getPerfumes()));
+       pistas.add(new PistaCinco(getPerfumes()));
+       pistas.add(new PistaSeis(getPerfumes()));
+       pistas.add(new PistaSiete(getPerfumes()));
+       pistas.add(new PistaOcho(getPerfumes()));
+       pistas.add(new PistaNueve(getPerfumes()));
+
+       return pistas;
+    }
+
 
 	public ArrayList<Perfume> getPerfumes() {
 		return perfumes;
