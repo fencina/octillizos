@@ -1,26 +1,11 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PerfumeUtils {
 	
-	public static ArrayList<String> buildNamesArray() {
-
-		ArrayList<String> nombres = new ArrayList<String>();
-		nombres.add("Tommy");
-		nombres.add("Polo");
-		nombres.add("D&G");
-		nombres.add("CK");
-		nombres.add("PR");
-		nombres.add("Chanel");
-		nombres.add("Banderas");
-		nombres.add("CH");
-
-		return nombres;
-	}
-
 	public static ArrayList<String> buildSmellsArray() {
 
 		ArrayList<String> aromas = new ArrayList<String>();
@@ -52,7 +37,9 @@ public class PerfumeUtils {
 	}
 
 	public static ArrayList<Perfume> buildRandomCombination() {
-		ArrayList<String> nombres = PerfumeUtils.buildNamesArray();
+		NombresEnum[] names = NombresEnum.values();
+		ArrayList<NombresEnum> nombres = new ArrayList<NombresEnum>(Arrays.asList(names));
+		
 		ArrayList<String> aromas = PerfumeUtils.buildSmellsArray();
 		ArrayList<Integer> ubicaciones = PerfumeUtils.buildLocationsArray();
 

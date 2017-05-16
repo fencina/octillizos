@@ -1,8 +1,9 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas;
 
-import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.NombresEnum;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 
 public class PistaCuatro extends Pista {
 
@@ -20,7 +21,7 @@ public class PistaCuatro extends Pista {
 
 	public Double resolver() {
 
-		Perfume perfumePR = searchPerfumeByName("PR");
+		Perfume perfumePR = searchPerfumeByName(NombresEnum.PR);
 		Perfume perfumeAcaramelado = searchPerfumeBySmell("acaramelado");
 
 		if ( perfumePR.getUbicacion() == 1 && perfumePR.getUbicacion() == perfumeAcaramelado.getUbicacion() -1 ) {

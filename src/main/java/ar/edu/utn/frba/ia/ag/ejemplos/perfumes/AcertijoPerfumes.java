@@ -5,10 +5,6 @@ import java.util.logging.Logger;
 import main.java.ar.edu.utn.frba.ia.ag.AlgoritmoGenetico;
 import main.java.ar.edu.utn.frba.ia.ag.ConfiguracionDefault;
 import main.java.ar.edu.utn.frba.ia.ag.Individuo;
-import main.java.ar.edu.utn.frba.ia.ag.cruzamiento.BinomialMascaraComplemento;
-import main.java.ar.edu.utn.frba.ia.ag.mutacion.MutacionSimple;
-import main.java.ar.edu.utn.frba.ia.ag.seleccion.ControlSobreNumeroEsperado;
-import main.java.ar.edu.utn.frba.ia.ag.paro.CantidadDeCiclos;
 
 public class AcertijoPerfumes {
 	

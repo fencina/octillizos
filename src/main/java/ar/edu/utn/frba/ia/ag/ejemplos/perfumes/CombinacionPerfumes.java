@@ -1,11 +1,10 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
-import main.java.ar.edu.utn.frba.ia.ag.Individuo;
-import java.util.concurrent.ThreadLocalRandom;
-import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas.PistaUno;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.logging.Logger;
+
+import main.java.ar.edu.utn.frba.ia.ag.Individuo;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas.PistaUno;
 
 public class CombinacionPerfumes extends Individuo {
 	
@@ -51,7 +50,7 @@ public class CombinacionPerfumes extends Individuo {
 
 		for (Perfume perfume : perfumes ) {
 			mensaje += "\nUbicacion: " + perfume.getUbicacion() + "\n";
-			mensaje += "Perfume: " + perfume.getNombre() + "\n";
+			mensaje += "Perfume: " + perfume.getNombre().getString() + "\n";
 			mensaje += "Aroma: " + perfume.getAroma() + "\n";
 		}
 

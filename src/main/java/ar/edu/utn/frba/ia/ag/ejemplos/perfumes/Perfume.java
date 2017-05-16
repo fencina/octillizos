@@ -2,7 +2,7 @@ package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
 public class Perfume implements Comparable<Perfume> {
 	
-	private String nombre;
+	private NombresEnum nombre;
 	private Integer ubicacion;
 	private String aroma;
 
@@ -11,12 +11,12 @@ public class Perfume implements Comparable<Perfume> {
 	{
 	     return(ubicacion - perfume.getUbicacion());
 	}
-
-	public String getNombre() {
-		return nombre;
+	
+	public NombresEnum getNombre() {
+		return this.nombre;
 	}
 	
-	public void setNombre(String nombre) {
+	public void setNombre(NombresEnum nombre) {
 		this.nombre = nombre;
 	}
 	
