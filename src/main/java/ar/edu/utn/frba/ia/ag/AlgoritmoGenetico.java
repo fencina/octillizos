@@ -3,7 +3,6 @@ package main.java.ar.edu.utn.frba.ia.ag;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AlgoritmoGenetico {
@@ -47,12 +46,6 @@ public class AlgoritmoGenetico {
 	public Individuo ejecutar() {
 		
 		this.generarPoblacionInicial(individuoClass);
-		
-		Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.FINE, "PoblaciÃ³n inicial");
-		
-		for (Individuo individuo : this.individuos) {
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.FINE, individuo.toString());
-		}
 		
 		Integer iteracion = new Integer(0);
 		
@@ -98,6 +91,7 @@ public class AlgoritmoGenetico {
 		}
 		
 		this.estado.agregarTotalAptitudes(totalAptitudes);
+		
 		this.estado.agregarAptitudesPromedio(totalAptitudes / this.individuos.size());
 		this.estado.agregarMejorIndividuo(mejorIndividuo);
 		this.estado.agregarPeorIndividuo(peorIndividuo);
@@ -118,23 +112,35 @@ public class AlgoritmoGenetico {
 	}
 	
     private void loggearEstado() {
-		System.out.print("Individuo final: " + this.individuos.get(0).toString());
+    	Individuo mejorIndividuoIteracion;
+		Individuo peorIndividuoIteracion;
+		Double aptitudPromedioIteracion;
+    	Individuo individuoFinal = this.individuos.get(0);
+    	Individuo individuoCampeon = this.estado.getMejorIndividuo();
+    	Individuo individuoPeor = this.estado.getPeorIndividuo();
+    	
+		System.out.print("Individuo final: " + individuoFinal.toString());
+		System.out.println("Aptitud: " + individuoFinal.aptitud());
 		System.out.println("Cantidad de Veces que muto: " + this.estado.getCantMutaciones() + " / " + this.estado.getCiclos() + "\n");
-		System.out.println("Individuo Campeon: " + this.estado.getMejorIndividuo());
-		System.out.println("Peor Individuo: " + this.estado.getPeorIndividuo());
+		
+		System.out.print("Individuo Campeon: " + individuoCampeon);
+		System.out.println("Aptitud: " + individuoCampeon.aptitud()+ "\n");
+		
+		System.out.print("Peor Individuo: " + this.estado.getPeorIndividuo());
+		System.out.println("Aptitud: " + individuoPeor.aptitud()+ "\n");
 		
 		System.out.println("Funciones de aptitud por iteración:");
 		System.out.println("Iteración;Mejor;Promedio;Peor");
-		for (int i = 0; i < this.estado.getMejoresIndividuos().size(); i++) {
-			
-			Individuo mejorIndividuo = this.estado.getMejoresIndividuos().get(i);
-			Individuo peorIndividuo = this.estado.getPeoresIndividuos().get(i);
-			Double aptitudPromedio = this.estado.getAptitudesPromedio().get(i);
+		
+		for (int i = 0; i < this.estado.getMejoresIndividuos().size(); i++) {			
+			mejorIndividuoIteracion = this.estado.getMejoresIndividuos().get(i);
+			peorIndividuoIteracion = this.estado.getPeoresIndividuos().get(i);
+			aptitudPromedioIteracion = this.estado.getAptitudesPromedio().get(i);
 			
 			System.out.print(String.format("%d;", i));
-			System.out.print(String.format("%1$.3f;", mejorIndividuo.aptitud()));
-			System.out.print(String.format("%1$.3f;", aptitudPromedio));
-			System.out.println(String.format("%1$.3f;", peorIndividuo.aptitud()));
+			System.out.print(String.format("%1$.3f;", mejorIndividuoIteracion.aptitud()));
+			System.out.print(String.format("%1$.3f;", aptitudPromedioIteracion));
+			System.out.println(String.format("%1$.3f;", peorIndividuoIteracion.aptitud()));
 		}
 	}
 }

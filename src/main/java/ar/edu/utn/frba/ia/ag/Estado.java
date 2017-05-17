@@ -30,18 +30,24 @@ public class Estado {
 	
 	public Individuo getMejorIndividuo() {
 		
-		List<Individuo> mejoresIndividuos = this.mejoresIndividuos; // para no romer el orden original
+		List<Individuo> mejoresIndividuos = new ArrayList<Individuo>(); // para no romer el orden original	
+		for (Individuo individuo : this.mejoresIndividuos) {		
+			mejoresIndividuos.add(individuo);
+		}
 		
-		Collections.sort(this.mejoresIndividuos);
+		Collections.sort(mejoresIndividuos);
 		
 		return mejoresIndividuos.isEmpty() ? null : mejoresIndividuos.get(0);
 	}
 	
 	public Individuo getPeorIndividuo() {
 		
-		List<Individuo> peoresIndividuos = this.peoresIndividuos; // para no romer el orden original
+		List<Individuo> peoresIndividuos = new ArrayList<Individuo>(); // para no romer el orden original
+		for (Individuo individuo : this.peoresIndividuos) {		
+			peoresIndividuos.add(individuo);
+		}
 		
-		Collections.sort(this.peoresIndividuos);
+		Collections.sort(peoresIndividuos);
 		
 		return peoresIndividuos.isEmpty() ? null : peoresIndividuos.get(peoresIndividuos.size() - 1);
 	}

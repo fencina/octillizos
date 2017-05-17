@@ -1,28 +1,30 @@
 package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes;
 
-import java.util.logging.Logger;
-
 import main.java.ar.edu.utn.frba.ia.ag.AlgoritmoGenetico;
+import main.java.ar.edu.utn.frba.ia.ag.Configuracion;
 import main.java.ar.edu.utn.frba.ia.ag.ConfiguracionDefault;
-import main.java.ar.edu.utn.frba.ia.ag.Individuo;
 
 public class AcertijoPerfumes {
 	
 	public static void main(String[] args) {
 		
-		ConfiguracionDefault config = new ConfiguracionDefault();
-		//config.setCriterioDeParo(new CantidadDeCiclos(1L));
-		//config.setPoblacionInicial(1);
+		//Configuracion 1
+		Configuracion config = new ConfiguracionDefault();
 		
-//		new CantidadDeCiclos(99L), // criterio de paro
-//		999, // cantIndividuosIniciales
-//		new Torneo(), // seleccion
-//		new Simple(), // cruzamiento
-//		new MutacionSimple(0.2)
+		//Descomentar para tener la "configuracion 2"
+		{
+//		config.setCriterioDeParo(new TiempoTranscurrido(0, 1, 0));
+//		config.setMetodoDeSeleccion(new Ranking(10));
+//		config.setPoblacionInicial(500000);
+		}
+		//Descomentar junto con la "configuracion 2" para tener la "configuracion 3"
+		{
+//		config.setCriterioDeParo(new TiempoTranscurrido(0, 5, 0));
+		}
 		
 		AlgoritmoGenetico combinacionPerfumes = new AlgoritmoGenetico(config, CombinacionPerfumes.class);
 		
-		Individuo combinacion = combinacionPerfumes.ejecutar();
+		combinacionPerfumes.ejecutar();
 	}
 	
 }
