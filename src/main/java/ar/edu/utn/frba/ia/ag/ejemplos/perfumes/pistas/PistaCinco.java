@@ -3,6 +3,7 @@ package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas;
 import java.util.ArrayList;
 
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.AromasEnum;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.CombinacionPerfumes;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.NombresEnum;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 
@@ -13,8 +14,8 @@ public class PistaCinco extends Pista {
 	****/
 
 
-	public PistaCinco(ArrayList<Perfume> perfumes) {
-		super(perfumes);
+	public PistaCinco(CombinacionPerfumes combinacion) {
+		super(combinacion);
 		puntuacion = 5;
 	}
 
@@ -22,7 +23,7 @@ public class PistaCinco extends Pista {
 	public Boolean condicion() {
 		Perfume perfumeChanel = searchPerfumeByName(NombresEnum.CHANEL);
 		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
-		return perfumeChanel.getUbicacion() == perfumeAcaramelado.getUbicacion() + 1;
+		return getUbicacion(perfumeChanel) == getUbicacion(perfumeAcaramelado) + 1;
 	}
 
 	@Override
@@ -30,10 +31,10 @@ public class PistaCinco extends Pista {
 		Perfume perfumeChanel = searchPerfumeByName(NombresEnum.CHANEL);
 		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
 		
-		if(perfumeChanel.getUbicacion() - 1 < 1){
+		if(getUbicacion(perfumeChanel) - 1 < 1){
 			penalizacion += 1;
 		}
-		if(perfumeAcaramelado.getUbicacion() + 1 < 8){
+		if(getUbicacion(perfumeAcaramelado) + 1 < 8){
 			penalizacion += 1;
 		}
 	}

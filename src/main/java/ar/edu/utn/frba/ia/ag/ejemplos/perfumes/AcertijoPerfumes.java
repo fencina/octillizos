@@ -21,9 +21,9 @@ public class AcertijoPerfumes {
 		
 		//Descomentar para tener la "configuracion 2"
 		{
-//		config.setCriterioDeParo(new TiempoTranscurrido(0, 1, 0));
-//		config.setMetodoDeSeleccion(new Ranking(100));
-//		config.setPoblacionInicial(500000);
+		config.setCriterioDeParo(new TiempoTranscurrido(0, 5, 0));
+		config.setMetodoDeSeleccion(new Ranking(10));
+		config.setPoblacionInicial(500000);
 		}
 		//Descomentar junto con la "configuracion 2" para tener la "configuracion 3"
 		{
@@ -31,11 +31,11 @@ public class AcertijoPerfumes {
 		}
 		//Otra configuracion
 		{
-			config.setCriterioDeParo(new TiempoTranscurrido(0, 15, 0));
-			config.setMetodoDeSeleccion(new Ranking(30));
-			config.setPoblacionInicial(99999);
-			config.setCruzamiento(new BinomialAzar());
-			config.setMutacion(new MutacionSimple(0.1));
+//			config.setCriterioDeParo(new TiempoTranscurrido(0, 1, 0));
+//			config.setMetodoDeSeleccion(new Ranking(10));
+//			config.setPoblacionInicial(99999);
+//			config.setCruzamiento(new BinomialAzar());
+//			config.setMutacion(new MutacionSimple(0.1));
 		}
 		
 		AlgoritmoGenetico combinacionPerfumes = new AlgoritmoGenetico(config, CombinacionPerfumes.class);

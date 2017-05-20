@@ -3,6 +3,7 @@ package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas;
 import java.util.ArrayList;
 
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.AromasEnum;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.CombinacionPerfumes;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.NombresEnum;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 
@@ -11,13 +12,15 @@ public abstract class Pista {
 	public Integer puntuacion;
 	public Integer verdad;
 	public Integer penalizacion;
+	public CombinacionPerfumes combinacion;
 
 	public ArrayList<Perfume> perfumes;
 	
-	public Pista(ArrayList<Perfume> perfumes) {
+	public Pista(CombinacionPerfumes combinacion) {
 		this.verdad = 0;
 		this.penalizacion = 0;
-		this.perfumes = perfumes;
+		this.combinacion = combinacion;
+		this.perfumes = combinacion.getPerfumes();
 	}
 
 	public Double resolver() {
@@ -25,7 +28,7 @@ public abstract class Pista {
 		if(this.condicion()) {		
 			verdad = 1;
 		} else{
-			this.penalizar();
+			//this.penalizar();
 		}
 		
 		return (double) ((puntuacion * verdad) - penalizacion);
@@ -67,12 +70,16 @@ public abstract class Pista {
 		Perfume foundPerfume = new Perfume();
 
 		for (Perfume perfume : perfumes) {
-			if (perfume.getUbicacion() == ubicacion) {
+			if (this.getUbicacion(perfume) == ubicacion) {
 				foundPerfume = perfume;
 				break;
 			}
 		}
 
 		return foundPerfume;
+	}
+	
+	public int getUbicacion(Perfume perfume){
+		return this.combinacion.getUbicacion(perfume);
 	}
 } 

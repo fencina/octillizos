@@ -3,6 +3,7 @@ package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas;
 import java.util.ArrayList;
 
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.AromasEnum;
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.CombinacionPerfumes;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.NombresEnum;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 
@@ -13,8 +14,8 @@ public class PistaTres extends Pista {
 	****/
 
 
-	public PistaTres(ArrayList<Perfume> perfumes) {
-		super(perfumes);
+	public PistaTres(CombinacionPerfumes combinacion) {
+		super(combinacion);
 		puntuacion = 7;
 	}
 
@@ -25,8 +26,8 @@ public class PistaTres extends Pista {
 		Perfume perfumeCK = searchPerfumeByName(NombresEnum.CK);
 		
 		return (
-			( perfumeOriental.getUbicacion() == perfumeAmaderado.getUbicacion() - 1 && perfumeOriental.getUbicacion() == perfumeCK.getUbicacion() + 1)
-			|| ( perfumeOriental.getUbicacion() == perfumeAmaderado.getUbicacion() + 1 && perfumeOriental.getUbicacion() == perfumeCK.getUbicacion() - 1));
+			( getUbicacion(perfumeOriental) == getUbicacion(perfumeAmaderado) - 1 && getUbicacion(perfumeOriental) == getUbicacion(perfumeCK) + 1)
+			|| ( getUbicacion(perfumeOriental) == getUbicacion(perfumeAmaderado) + 1 && getUbicacion(perfumeOriental) == getUbicacion(perfumeCK) - 1));
 	}
 
 	@Override
@@ -35,13 +36,13 @@ public class PistaTres extends Pista {
 		Perfume perfumeAmaderado = searchPerfumeBySmell(AromasEnum.AMADERADO);
 		Perfume perfumeCK = searchPerfumeByName(NombresEnum.CK);
 		
-		Boolean primerDesbordamiento = (perfumeAmaderado.getUbicacion() - 1 < 1) && (perfumeCK.getUbicacion() + 1 > 8);
-		Boolean segundoDesbordamiento = (perfumeAmaderado.getUbicacion() + 1 > 8) && (perfumeCK.getUbicacion() - 1 < 1);
+		Boolean primerDesbordamiento = (getUbicacion(perfumeAmaderado) - 1 < 1) && (getUbicacion(perfumeCK) + 1 > 8);
+		Boolean segundoDesbordamiento = (getUbicacion(perfumeAmaderado) + 1 > 8) && (getUbicacion(perfumeCK) - 1 < 1);
 		
 		if(primerDesbordamiento && segundoDesbordamiento){
 			penalizacion += 4;
 		}
-		if(perfumeOriental.getUbicacion() == 1 || perfumeOriental.getUbicacion() == 8){
+		if(getUbicacion(perfumeOriental) == 1 || getUbicacion(perfumeOriental) == 8){
 			penalizacion += 1;
 		}
 	}

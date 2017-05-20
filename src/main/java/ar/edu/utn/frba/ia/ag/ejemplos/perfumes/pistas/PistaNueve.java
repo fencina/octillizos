@@ -3,6 +3,7 @@ package main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.pistas;
 
 import java.util.ArrayList;
 
+import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.CombinacionPerfumes;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.NombresEnum;
 import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 
@@ -13,8 +14,8 @@ public class PistaNueve extends Pista {
 	****/
 
 
-	public PistaNueve(ArrayList<Perfume> perfumes) {		
-		super(perfumes);
+	public PistaNueve(CombinacionPerfumes combinacion) {		
+		super(combinacion);
 		puntuacion = 5;
 	}
 
@@ -23,7 +24,7 @@ public class PistaNueve extends Pista {
 		Perfume perfumeBanderas = searchPerfumeByName(NombresEnum.BANDERAS);
 		Perfume perfumeCH = searchPerfumeByName(NombresEnum.CH);
 		
-		return perfumeBanderas.getUbicacion() == perfumeCH.getUbicacion() - 2;
+		return getUbicacion(perfumeBanderas) == getUbicacion(perfumeCH) - 2;
 	}
 
 	@Override
@@ -31,10 +32,10 @@ public class PistaNueve extends Pista {
 		Perfume perfumeBanderas = searchPerfumeByName(NombresEnum.BANDERAS);
 		Perfume perfumeCH = searchPerfumeByName(NombresEnum.CH);
 		
-		if(perfumeCH.getUbicacion() - 2 < 1){
+		if(getUbicacion(perfumeCH) - 2 < 1){
 			penalizacion += 2;
 		}
-		if(perfumeBanderas.getUbicacion() + 2 > 8){
+		if(getUbicacion(perfumeBanderas) + 2 > 8){
 			penalizacion += 2;
 		}
 	}

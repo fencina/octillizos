@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+import main.java.ar.edu.utn.frba.ia.ag.Individuo;
+
 public class PerfumeUtils {
 	
 	public static ArrayList<Integer> buildLocationsArray() {
@@ -21,7 +23,7 @@ public class PerfumeUtils {
 		return ubicaciones;
 	}
 
-	public static ArrayList<Perfume> buildRandomCombination() {
+	public static Individuo buildRandomCombination() {
 		NombresEnum[] vNombres = NombresEnum.values();
 		ArrayList<NombresEnum> nombres = new ArrayList<NombresEnum>(Arrays.asList(vNombres));
 		
@@ -30,7 +32,7 @@ public class PerfumeUtils {
 		
 		ArrayList<Integer> ubicaciones = PerfumeUtils.buildLocationsArray();
 
-		ArrayList<Perfume> combinacion = new ArrayList<Perfume>();
+		CombinacionPerfumes combinacion = new CombinacionPerfumes();
 		Integer iterations = ubicaciones.size();
 
 		for (int i = 0 ; i < iterations ; i++) {
@@ -49,10 +51,39 @@ public class PerfumeUtils {
 
 			// Get random location and remove it from array
 			randomIndex = ThreadLocalRandom.current().nextInt(0, ubicaciones.size());
-			perfume.setUbicacion(ubicaciones.get(randomIndex));
+			//perfume.setUbicacion(ubicaciones.get(randomIndex));
+			int ubicacionRnd = ubicaciones.get(randomIndex);
 			ubicaciones.remove(randomIndex);
 
-			combinacion.add(perfume);
+			//combinacion.add(perfume);
+//			System.out.println(String.format("i: %d;", i));
+//			System.out.println(String.format("ubicacion: %d;", ubicacionRnd));
+			switch(ubicacionRnd){
+				case 1:
+					combinacion.setPosicion1(perfume);
+					break;
+				case 2:
+					combinacion.setPosicion2(perfume);
+					break;
+				case 3:
+					combinacion.setPosicion3(perfume);
+					break;
+				case 4:
+					combinacion.setPosicion4(perfume);
+					break;
+				case 5:
+					combinacion.setPosicion5(perfume);
+					break;
+				case 6:
+					combinacion.setPosicion6(perfume);
+					break;
+				case 7:
+					combinacion.setPosicion7(perfume);
+					break;
+				case 8:
+					combinacion.setPosicion8(perfume);
+					break;
+			}
 		}
 
 		return combinacion;
