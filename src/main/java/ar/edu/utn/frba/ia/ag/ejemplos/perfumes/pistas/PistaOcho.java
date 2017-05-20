@@ -14,24 +14,41 @@ public class PistaOcho extends Pista {
 		y el segundo a la izquierda con aroma especiado. (1 Punto)
 	****/
 
-	public Integer puntuacion = 1;
 
-	public PistaOcho(ArrayList<Perfume> perfumes) {
-		
+	public PistaOcho(ArrayList<Perfume> perfumes) {		
 		super(perfumes);
+		puntuacion = 20;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumePolo = searchPerfumeByName(NombresEnum.POLO);
 		Perfume perfumeOceanico = searchPerfumeBySmell(AromasEnum.OCEANICO);
 		Perfume perfumeEspeciado = searchPerfumeBySmell(AromasEnum.ESPECIADO);
+		
+		return 	perfumePolo.getUbicacion() == perfumeOceanico.getUbicacion() + 2 &&
+				perfumePolo.getUbicacion() == perfumeEspeciado.getUbicacion() - 2;
+	}
 
-		if ( perfumePolo.getUbicacion() == perfumeOceanico.getUbicacion() + 2 &&
-			 perfumePolo.getUbicacion() == perfumeEspeciado.getUbicacion() - 2 ) {
-			verdad = 1;
+	@Override
+	public void penalizar() {
+		Perfume perfumePolo = searchPerfumeByName(NombresEnum.POLO);
+		Perfume perfumeOceanico = searchPerfumeBySmell(AromasEnum.OCEANICO);
+		Perfume perfumeEspeciado = searchPerfumeBySmell(AromasEnum.ESPECIADO);
+		
+		if(perfumePolo.getUbicacion() - 2 < 1){
+			penalizacion += 2;
 		}
-
-		return (double) (puntuacion * verdad);
+		if(perfumeOceanico.getUbicacion() + 2 > 8){
+			penalizacion += 2;
+		}
+		
+		if(perfumePolo.getUbicacion() + 2 > 8){
+			penalizacion += 2;
+		}
+		if(perfumeEspeciado.getUbicacion() - 2 < 1){
+			penalizacion += 2;
+		}
+		
 	}
 } 

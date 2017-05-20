@@ -9,30 +9,30 @@ import main.java.ar.edu.utn.frba.ia.ag.ejemplos.perfumes.Perfume;
 public abstract class Pista {
 
 	public Integer puntuacion;
-	public Integer verdad = 0;
+	public Integer verdad;
+	public Integer penalizacion;
 
 	public ArrayList<Perfume> perfumes;
 	
 	public Pista(ArrayList<Perfume> perfumes) {
-		
+		this.verdad = 0;
+		this.penalizacion = 0;
 		this.perfumes = perfumes;
 	}
 
-	public abstract Double resolver();
-
-//	public Perfume searchPerfumeByName(String nombre) {
-//
-//		Perfume foundPerfume = new Perfume();
-//
-//		for (Perfume perfume : perfumes) {
-//			if (perfume.getNombre() == nombre) {
-//				foundPerfume = perfume;
-//				break;
-//			}
-//		}
-//
-//		return foundPerfume;
-//	}
+	public Double resolver() {
+		
+		if(this.condicion()) {		
+			verdad = 1;
+		} else{
+			this.penalizar();
+		}
+		
+		return (double) ((puntuacion * verdad) - penalizacion);
+	};
+	
+	public abstract Boolean condicion();
+	public abstract void  penalizar();
 	
 	public Perfume searchPerfumeByName(NombresEnum nombre) {
 

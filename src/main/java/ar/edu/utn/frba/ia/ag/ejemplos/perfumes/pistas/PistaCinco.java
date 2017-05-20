@@ -12,22 +12,30 @@ public class PistaCinco extends Pista {
 		A la derecha del perfume acaramelado está un Chanel. (1 Punto)
 	****/
 
-	public Integer puntuacion = 1;
 
 	public PistaCinco(ArrayList<Perfume> perfumes) {
-		
 		super(perfumes);
+		puntuacion = 5;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumeChanel = searchPerfumeByName(NombresEnum.CHANEL);
 		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
-
-		if ( perfumeChanel.getUbicacion() == perfumeAcaramelado.getUbicacion() + 1 ) {
-			verdad = 1;
-		}
-
-		return (double) (puntuacion * verdad);
+		return perfumeChanel.getUbicacion() == perfumeAcaramelado.getUbicacion() + 1;
 	}
+
+	@Override
+	public void penalizar() {
+		Perfume perfumeChanel = searchPerfumeByName(NombresEnum.CHANEL);
+		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
+		
+		if(perfumeChanel.getUbicacion() - 1 < 1){
+			penalizacion += 1;
+		}
+		if(perfumeAcaramelado.getUbicacion() + 1 < 8){
+			penalizacion += 1;
+		}
+	}
+	
 } 

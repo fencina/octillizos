@@ -12,22 +12,30 @@ public class PistaNueve extends Pista {
 		Un Antonio Banderas es el segundo perfume a la izquierda de un Carolina Herrera. (1 Punto)
 	****/
 
-	public Integer puntuacion = 1;
 
-	public PistaNueve(ArrayList<Perfume> perfumes) {
-		
+	public PistaNueve(ArrayList<Perfume> perfumes) {		
 		super(perfumes);
+		puntuacion = 5;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumeBanderas = searchPerfumeByName(NombresEnum.BANDERAS);
 		Perfume perfumeCH = searchPerfumeByName(NombresEnum.CH);
+		
+		return perfumeBanderas.getUbicacion() == perfumeCH.getUbicacion() - 2;
+	}
 
-		if ( perfumeBanderas.getUbicacion() == perfumeCH.getUbicacion() - 2 ) {
-			verdad = 1;
+	@Override
+	public void penalizar() {
+		Perfume perfumeBanderas = searchPerfumeByName(NombresEnum.BANDERAS);
+		Perfume perfumeCH = searchPerfumeByName(NombresEnum.CH);
+		
+		if(perfumeCH.getUbicacion() - 2 < 1){
+			penalizacion += 2;
 		}
-
-		return (double) (puntuacion * verdad);
+		if(perfumeBanderas.getUbicacion() + 2 > 8){
+			penalizacion += 2;
+		}
 	}
 } 

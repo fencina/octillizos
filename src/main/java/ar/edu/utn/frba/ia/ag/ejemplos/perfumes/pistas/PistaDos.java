@@ -13,23 +13,32 @@ public class PistaDos extends Pista {
 		y está después del perfume oriental. (2 Puntos)
 	****/
 
-	public Integer puntuacion = 2;
 
 	public PistaDos(ArrayList<Perfume> perfumes) {
-		
 		super(perfumes);
+		puntuacion = 7;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumeCK = searchPerfumeByName(NombresEnum.CK);
 		Perfume perfumeOriental = searchPerfumeBySmell(AromasEnum.ORIENTAL);
 
-		if (perfumeCK.getUbicacion() == 8 &&
-			perfumeCK.getUbicacion() == perfumeOriental.getUbicacion() + 1) {
-			verdad = 1;
-		}
+		return (
+			perfumeCK.getUbicacion() == 8 &&
+			perfumeOriental.getUbicacion() == perfumeCK.getUbicacion() - 1);
+	}
 
-		return (double) (puntuacion * verdad);
+	@Override
+	public void penalizar() {
+		Perfume perfumeCK = searchPerfumeByName(NombresEnum.CK);
+		Perfume perfumeOriental = searchPerfumeBySmell(AromasEnum.ORIENTAL);
+		
+		if(perfumeCK.getUbicacion() - 1 < 1){
+			penalizacion += 1;
+		}
+		if(perfumeOriental.getUbicacion() + 1 > 8){
+			penalizacion += 1;
+		}
 	}
 } 

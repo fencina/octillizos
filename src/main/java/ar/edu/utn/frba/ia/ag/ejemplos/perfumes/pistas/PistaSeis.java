@@ -13,24 +13,38 @@ public class PistaSeis extends Pista {
 		El Tommy Girl está entre un perfume cítrico y uno floral. (2 Puntos)
 	****/
 
-	public Integer puntuacion = 2;
 
 	public PistaSeis(ArrayList<Perfume> perfumes) {
-		
 		super(perfumes);
+		puntuacion = 10;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumeTommy = searchPerfumeByName(NombresEnum.TOMMY);
 		Perfume perfumeCitrico = searchPerfumeBySmell(AromasEnum.CITRICO);
 		Perfume perfumeFloral = searchPerfumeBySmell(AromasEnum.FLORAL);
+		
+		return ( perfumeTommy.getUbicacion() == perfumeCitrico.getUbicacion() - 1 && perfumeTommy.getUbicacion() == perfumeFloral.getUbicacion() + 1)
+				|| ( perfumeTommy.getUbicacion() == perfumeCitrico.getUbicacion() + 1 && perfumeTommy.getUbicacion() == perfumeFloral.getUbicacion() - 1);
+		
+	}
 
-		if ( ( perfumeTommy.getUbicacion() == perfumeCitrico.getUbicacion() - 1 && perfumeTommy.getUbicacion() == perfumeFloral.getUbicacion() + 1)
-			|| ( perfumeTommy.getUbicacion() == perfumeCitrico.getUbicacion() + 1 && perfumeTommy.getUbicacion() == perfumeFloral.getUbicacion() - 1)) {
-			verdad = 1;
+	@Override
+	public void penalizar() {
+		Perfume perfumeTommy = searchPerfumeByName(NombresEnum.TOMMY);
+		Perfume perfumeCitrico = searchPerfumeBySmell(AromasEnum.CITRICO);
+		Perfume perfumeFloral = searchPerfumeBySmell(AromasEnum.FLORAL);
+		
+		Boolean primerDesbordamiento = (perfumeCitrico.getUbicacion() - 1 < 1) && (perfumeFloral.getUbicacion() + 1 > 8);
+		Boolean segundoDesbordamiento = (perfumeCitrico.getUbicacion() + 1 > 8) && (perfumeFloral.getUbicacion() - 1 < 1);
+		
+		if(primerDesbordamiento && segundoDesbordamiento){
+			penalizacion += 4;
 		}
-
-		return (double) (puntuacion * verdad);
+		if(perfumeTommy.getUbicacion() == 1 || perfumeTommy.getUbicacion() == 8){
+			penalizacion += 1;
+		}
+		
 	}
 } 

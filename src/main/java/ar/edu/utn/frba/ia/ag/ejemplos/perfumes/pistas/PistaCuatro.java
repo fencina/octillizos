@@ -13,22 +13,30 @@ public class PistaCuatro extends Pista {
 		y está a la izquierda del perfume acaramelado. (2 Puntos)
 	****/
 
-	public Integer puntuacion = 2;
 
-	public PistaCuatro(ArrayList<Perfume> perfumes) {
-		
+	public PistaCuatro(ArrayList<Perfume> perfumes) {	
 		super(perfumes);
+		puntuacion = 7;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumePR = searchPerfumeByName(NombresEnum.PR);
 		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
+		
+		return ( perfumePR.getUbicacion() == 1 && perfumePR.getUbicacion() == perfumeAcaramelado.getUbicacion() - 1 );
+	}
 
-		if ( perfumePR.getUbicacion() == 1 && perfumePR.getUbicacion() == perfumeAcaramelado.getUbicacion() -1 ) {
-			verdad = 1;
+	@Override
+	public void penalizar() {
+		Perfume perfumePR = searchPerfumeByName(NombresEnum.PR);
+		Perfume perfumeAcaramelado = searchPerfumeBySmell(AromasEnum.ACARAMELADO);
+		
+		if(perfumeAcaramelado.getUbicacion() - 1 < 1){
+			penalizacion += 1;
 		}
-
-		return (double) (puntuacion * verdad);
+		if(perfumePR.getUbicacion() + 1 > 8){
+			penalizacion += 1;
+		}
 	}
 } 

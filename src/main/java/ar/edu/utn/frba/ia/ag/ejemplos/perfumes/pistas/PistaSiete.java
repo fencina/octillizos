@@ -13,22 +13,30 @@ public class PistaSiete extends Pista {
 		El perfume floral está a la izquierda del perfume Polo.  (1 Punto)
 	****/
 
-	public Integer puntuacion = 1;
 
-	public PistaSiete(ArrayList<Perfume> perfumes) {
-		
+	public PistaSiete(ArrayList<Perfume> perfumes) {		
 		super(perfumes);
+		puntuacion = 5;
 	}
 
-	public Double resolver() {
-
+	@Override
+	public Boolean condicion() {
 		Perfume perfumeFloral = searchPerfumeBySmell(AromasEnum.FLORAL);
 		Perfume perfumePolo = searchPerfumeByName(NombresEnum.POLO);
+		
+		return perfumeFloral.getUbicacion() == perfumePolo.getUbicacion() - 1;
+	}
 
-		if ( perfumeFloral.getUbicacion() == perfumePolo.getUbicacion() - 1) {
-			verdad = 1;
+	@Override
+	public void penalizar() {
+		Perfume perfumeFloral = searchPerfumeBySmell(AromasEnum.FLORAL);
+		Perfume perfumePolo = searchPerfumeByName(NombresEnum.POLO);
+		
+		if(perfumePolo.getUbicacion() - 1  < 1){
+			penalizacion += 1;
 		}
-
-		return (double) (puntuacion * verdad);
+		if(perfumeFloral.getUbicacion() + 1 > 8){
+			penalizacion += 1;
+		}
 	}
 } 

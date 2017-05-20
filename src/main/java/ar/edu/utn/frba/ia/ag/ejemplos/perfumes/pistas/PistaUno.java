@@ -13,24 +13,41 @@ public class PistaUno extends Pista {
 		y el primero a la derecha del perfume frutal. (2 Puntos)
 	****/
 
-	public Integer puntuacion = 2;
 
-	public PistaUno(ArrayList<Perfume> perfumes) {
-		
+	public PistaUno(ArrayList<Perfume> perfumes) {		
 		super(perfumes);
+		puntuacion = 15;
 	}
-
-	public Double resolver() {
-
+	
+	@Override
+	public Boolean condicion(){
 		Perfume perfumeDG = searchPerfumeByName(NombresEnum.DANDG);
 		Perfume perfumeTommy = searchPerfumeByName(NombresEnum.TOMMY);
 		Perfume perfumeFrutal = searchPerfumeBySmell(AromasEnum.FRUTAL);
 
-		if (perfumeDG.getUbicacion() == perfumeTommy.getUbicacion() - 2 &&
-			perfumeDG.getUbicacion() == perfumeFrutal.getUbicacion() + 1) {
-			verdad = 1;
-		}
+		return (
+			perfumeDG.getUbicacion() == perfumeTommy.getUbicacion() - 2 &&
+			perfumeDG.getUbicacion() == perfumeFrutal.getUbicacion() + 1);
+	}
 
-		return (double) (puntuacion * verdad);
+	@Override
+	public void penalizar() {
+		Perfume perfumeDG = searchPerfumeByName(NombresEnum.DANDG);
+		Perfume perfumeTommy = searchPerfumeByName(NombresEnum.TOMMY);
+		Perfume perfumeFrutal = searchPerfumeBySmell(AromasEnum.FRUTAL);
+		
+		if(perfumeTommy.getUbicacion() - 2 < 1){
+			penalizacion += 2;
+		}
+		if(perfumeDG.getUbicacion() + 2 > 8){
+			penalizacion += 2;
+		}
+		
+		if(perfumeFrutal.getUbicacion() + 1 > 8){
+			penalizacion += 1;
+		}
+		if(perfumeDG.getUbicacion() - 1 < 1){
+			penalizacion += 1;
+		}
 	}
 } 
